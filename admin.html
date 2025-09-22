@@ -12,6 +12,7 @@
     integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
     crossorigin="anonymous"
   >
+  <script src="control_admin.js" defer></script>
 
   <!-- Tu hoja de estilos -->
   <link rel="stylesheet" href="css/styles.css">
@@ -33,7 +34,7 @@
           <li class="nav-item"><a class="nav-link active" href="index.html">Inicio</a></li>
           <li class="nav-item"><a class="nav-link" href="Servicios.html">Servicios</a></li>
           <li class="nav-item"><a class="nav-link" href="Login.html">Iniciar Sesión</a></li>
-          <li class="nav-item"><a class="btn btn-warning ms-lg-2" href="Contacto.html">Contacto</a></li>
+          <li class="nav-item"><a class="btn btn-warning ms-lg-2 text-light bg-opacity-10" href="Contacto.html">Contacto</a></li>
         </ul>
       </div>
     </div>
@@ -41,48 +42,30 @@
   
   <div class="d-flex">
     <!-- Barra lateral -->
-    <div class="sidebar">
-      <h4>Admin</h4>
-      <a href="#">Servicios</a>
-      <a href="#">Usuarios</a>
-      <a href="login.html">Cerrar sesión</a>
+    <div class="bg-dark">
+      <nav class="navbar navbar-expand-sm bg-dark navbar-light">
+        <ul class="nav flex-column">
+          <li class="nav-item"><a class="nav-link" href="Servicios.html"><label class="text-light">Servicios</label></a></li>
+          <li class="nav-item"><a class="nav-link" href="#"><label class="text-light">Usuarios</label></a></li>
+          <li class="nav-item"><a class="nav-link" href="login.html"><label class="text-light">Cerrar sesión</label></a></li>
+        </ul>
+      </nav>
     </div>
 
     <!-- Área principal -->
     <div class="container-fluid p-4">
       <div class="d-flex justify-content-between align-items-center mb-4">
-        <h2>Gestión de Servicios</h2>
-        <button class="btn btn-warning">Crear nuevo servicio</button>
+        <h2>Panel de Administración</h2>
+        <button class="btn btn-warning ms-lg-2 text-light bg-opacity-10">Crear nuevo servicio</button>
       </div>
 
       <div class="table-responsive">
-        <table class="table table-bordered table-hover">
-          <thead class="table-dark">
-            <tr>
-              <th>Nombre</th>
-              <th>Precio</th>
-              <th>Estado</th>
-              <th>Acciones</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>Desarrollo Web</td>
-              <td>$200 USD</td>
-              <td>Activo</td>
-              <td>
-                <button class="btn btn-sm btn-primary me-2">Editar</button>
-                <button class="btn btn-sm btn-danger">Eliminar</button>
-              </td>
-            </tr>
-            <!-- Puedes agregar más filas aquí -->
-          </tbody>
+          <table class="table table-group-divider table-hover" id="tabla_servicios">
         </table>
+      </div>
       </div>
     </div>
   </div>
-
-  <script src="js/scripts.js"></script>
 </body>
 </html>
 
