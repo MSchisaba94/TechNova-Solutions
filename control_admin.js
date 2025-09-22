@@ -1,18 +1,17 @@
 
-
-
     let servicios = []; // Array para almacenar usuarios
     const form = document.getElementById("form_servicios");
     const form_editar = document.getElementById("form_editar");
     const tableBody = document.getElementById("tabla_servicios");
 
-    servicios.push({indice:"1", nombre_servicio:"Desarrollo Web", precio:"$200 USD", estado:"Activo"});
-    servicios.push({indice:"2", nombre_servicio:"Consultoria Tecnológica", precio:"$200 USD", estado:"Inactivo"});
-    servicios.push({indice:"3", nombre_servicio:"Mantenimiento de Sistemas", precio:"$250 USD", estado:"Activo"});
-    servicios.push({indice:"4", nombre_servicio:"Migración de Datos", precio:"$400 USD", estado:"Inactivo"});
-    servicios.push({indice:"5", nombre_servicio:"Capacitación IT", precio:"$150 USD", estado:"Activo"});
-    servicios.push({indice:"6", nombre_servicio:"Integración de APIs", precio:"$$350 USD", estado:"Inactivo"});
+    servicios.push({nombre_servicio:"Desarrollo Web", precio:"$200 USD", estado:"Activo"});
+    servicios.push({nombre_servicio:"Consultoria Tecnológica", precio:"$200 USD", estado:"Inactivo"});
+    servicios.push({nombre_servicio:"Mantenimiento de Sistemas", precio:"$250 USD", estado:"Activo"});
+    servicios.push({nombre_servicio:"Migración de Datos", precio:"$400 USD", estado:"Inactivo"});
+    servicios.push({nombre_servicio:"Capacitación IT", precio:"$150 USD", estado:"Activo"});
+    servicios.push({nombre_servicio:"Integración de APIs", precio:"$350 USD", estado:"Inactivo"});
 
+    //Consultar Servicios
     function mostrar_servicios() {
       tableBody.innerHTML = "";
       const cabecera = `<thead class="table-light">
@@ -42,7 +41,7 @@
     mostrar_servicios();
 
 
-    // Editar usuario
+    // Editar Servicio
     function formEditarServicio (index) {
       const servicio = servicios[index];
       tableBody.innerHTML = "";
@@ -55,7 +54,7 @@
               <th>Acciones</th>
             </tr>
           </thead>
-          </tbody>
+          <tbody>
           <tr>
           <input type="hidden" id="userId">
           <td>
@@ -69,6 +68,7 @@
     <button type="button" onclick="mostrar_servicios()">Cancelar</button>
     </td>
         </tr>
+        </tbody>
         </form>`
     tableBody.innerHTML += form;
     }  
@@ -77,14 +77,67 @@
     servicios[index].nombre_servicio = document.getElementById("nombre").value;
     servicios[index].precio = document.getElementById("precio").value;
     servicios[index].estado = document.getElementById("estado").value;
+    alert("Servicio Editado Exitosamente");
     mostrar_servicios();
     }
       
       
 
-    // Eliminar usuario
+    // Eliminar Servicio
     window.eliminarServicio = function(index) {
       servicios.splice(index, 1);
+      alert("Servicio Eliminado Exitosamente");
       mostrar_servicios();
     };
 
+    // Adicionar Servicio
+    function formAdicionarServicio () {
+      tableBody.innerHTML = "";
+      const form = `<form id="userForm">
+      <thead class="table-light">
+      <tbody>
+            <tr>
+              <td><label for="nombre_servicio">Nombre Servicio:</label>
+              <input type="text" id="nombre_servicio" name="nombre_servicio" required></td>
+            </tr>
+            <tr>
+              <td><label for="precio_servicio">Precio Servicio:</label>
+              <input type="text" id="precio_servicio" name="precio_servicio" required></td>
+            </tr>
+            <tr>
+              <td><label for="estado_servicio">Estado Servicio:</label>
+              <input type="text" id="estado_servicio" name="estado_servicio" required></td>
+            </tr>
+    <tr>
+    <td>
+    <button type="button" onclick="adicionarServicio()">Guardar</button>
+    <button type="button" onclick="mostrar_servicios()">Cancelar</button>
+    </td>
+        </tr>
+        </tbody>
+        </form>`
+    tableBody.innerHTML += form;
+    }
+
+    function adicionarServicio(){
+    if (document.getElementById("nombre_servicio").value != "" && 
+        document.getElementById("precio_servicio").value != "" &&
+        document.getElementById("estado_servicio").value != ""
+      ){
+      nombre_nuevo_servicio = document.getElementById("nombre_servicio").value;
+      precio_nuevo_servicio = document.getElementById("precio_servicio").value;
+      estado_nuevo_servicio = document.getElementById("estado_servicio").value;
+    }
+    else {
+      alert("Campo No puede estar vacio");
+      document.getElementById("nombre_servicio").value = "";
+      document.getElementById("precio_servicio").value = "";
+      document.getElementById("estado_servicio").value = "";
+    }
+
+    if (nombre_nuevo_servicio != "" && precio_nuevo_servicio != "" && estado_nuevo_servicio != ""){
+    servicios.push({nombre_servicio: nombre_nuevo_servicio,precio: precio_nuevo_servicio,estado: estado_nuevo_servicio})
+    alert("Se Crea Nuevo Servicio Exitosamente");  
+    }
+    mostrar_servicios();
+    }
